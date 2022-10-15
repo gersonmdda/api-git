@@ -22,26 +22,25 @@ class GitApiController extends BaseController
 
     public function index(Request $request)
     {
-        $filters = [
-            // 'language' => 'PHP',
-            // 'size' => 20673,
-            // 'archived' => false
-        ];
-        $name = 'desa';
-        $sort = null;//'commit';
-        $this->gitHubService->getRepositories($filters,$name,$sort);
-        // try{
-        //     return response()->json([
-        //         'status' => true,
-        //         'response'=> $this->rankingService->getRanking($request->get('movement'))
-        //     ],200);
-        // } catch(Throwable $e){
-        //     $error_code = $e->getCode() ? $e->getCode() : 500;
-        //     return response()->json([
-        //         'status' => false,
-        //         'error'=> $e->getMessage()
-        //     ],$error_code);
-        // }
+        $params = $request->all();
+        if($params){
+            $filters = [
+                'language' => $params['language'],
+                'size' =>  $params['size'] ? (int) $params['size'] : $params['size'],
+                'archived' => (int) ($params['archived']) == 2 ? null : $params['archived']
+            ];
+            $name = $params['name'];
+            $sort = $params['sort'] ?? null;
+            $repositories = $this->gitHubService->getRepositories($filters,$name,$sort);
+        } else {
+            $repositories = $this->gitHubService->getRepositories();
+        }
+        return view('git_projects', [
+                                        'repositories' => $repositories,
+                                        'filters' =>$filters,
+                                        'name' =>$name
+                                    ]);
+        
     }
 
 }

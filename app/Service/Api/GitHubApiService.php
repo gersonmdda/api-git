@@ -8,15 +8,7 @@ use Illuminate\Http\Client\Response;
 
 class GitHubApiService
 {
-    // protected PersonalRecordRepository $personalRecordRepository;
-    // protected MovementRepository $movementRepository;
-
-    // function __construct(PersonalRecordRepository $personalRecordRepository,MovementRepository $movementRepository) 
-    // {
-    //     $this->personalRecordRepository = $personalRecordRepository;
-    //     $this->movementRepository = $movementRepository;
-    // }
-
+    
     private $status_code_success = 200;
 
     public function getRepositories($sort = 'full_name',$asc = 'asc'):? array 
@@ -26,22 +18,12 @@ class GitHubApiService
             $response = Http::withHeaders([
                 'Accept' => 'application/vnd.github+json',
                 'Authorization' => 'Bearer '.env('GIT_HUB_TOKEN')
-            ])->get(env('GIT_HUB_URL').'/users/gersonmdda/repos',['sort'=>$sort,'direction'=>$asc]);
-            // ])->get(env('GIT_HUB_URL').'/user/repos');
+            ])->get(env('GIT_HUB_URL').'/users/'.env('GIT_HUB_USER').'/repos',['sort'=>$sort,'direction'=>$asc]);
             $return = $this->verifyStatusCode($response);
         }catch (Exception $e) {
             throw $e;
         }
         return $return;
-
-        //https://docs.github.com/pt/rest/repos/repos#list-repositories-for-a-user
-        // Path parameters
-        // sortstring
-        // The property to sort the results by.
-
-        // Default: full_name
-
-        // Can be one of: created, updated, pushed, full_name
     }
 
     public function getLastCommit(String $repository,String $branch = 'main'):? array
@@ -50,7 +32,7 @@ class GitHubApiService
             $response = Http::withHeaders([
                 'Accept' => 'application/vnd.github+json',
                 'Authorization' => 'Bearer '.env('GIT_HUB_TOKEN')
-            ])->get(env('GIT_HUB_URL')."/repos/gersonmdda/{$repository}/commits/{$branch}");
+            ])->get(env('GIT_HUB_URL')."/repos/".env('GIT_HUB_USER')."/{$repository}/commits/{$branch}");
             $return = $this->verifyStatusCode($response);
         }catch (Exception $e) {
             throw $e;

@@ -37,8 +37,8 @@ class GitApiController extends BaseController
         }
         return view('git_projects', [
                                         'repositories' => $repositories,
-                                        'filters' =>$filters,
-                                        'name' =>$name
+                                        'filters' =>$filters ?? null,
+                                        'name' =>$name ?? null
                                     ]);
         
     }

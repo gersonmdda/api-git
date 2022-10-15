@@ -1,0 +1,20 @@
+$ docker ps
+
+Verificar a imagem com o nome desafio/laravel-app
+
+Copiar o CONTAINER ID
+
+rodar o comando 
+
+$ docker exec -it <container id> bash
+
+Exemplo:
+CONTAINER ID   IMAGE                 COMMAND                  CREATED              STATUS              PORTS                                                  NAMES
+0e71c1761d8e   desafio/laravel-app   "docker-php-entrypoi…"   About a minute ago   Up About a minute   9000/tcp                                               desafio-laravel
+
+
+$ docker exec -it 0e71c1761d8e bash
+
+
+START PROJECT
+./vendor/bin/sail up

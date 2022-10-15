@@ -60,3 +60,12 @@ Exemplo:
 
 
 ## CRIAR env para o projeto de acordo com arquico .env.example
+
+Editar variáveis do env 
+GIT_HUB_TOKEN="token"
+GIT_HUB_URL="https://api.github.com"
+GIT_HUB_USER="user"
+
+
+Rodar projeto em:
+http://localhost:8989

@@ -1,4 +1,59 @@
+README
 
-START PROJECT
-composer require laravel/sail --dev
-./vendor/bin/sail up
+## DOCKER
+
+Inicialmente é necessário ter o docker instalado.
+
+## GitHub
+
+Uma vez com o docker, efetuar o clone do projeto através do GitHub
+
+$ git clone 
+
+## Execução
+
+Uma vez com o projeto clonado
+
+pelo terminal, entrar na pasta raiz do projeto 
+
+para subir uma imagem do docker rodar o comando
+
+$ docker-compose up --build
+
+
+## Entrar na imagem do projeto
+
+Executar o comando 
+
+$ docker ps
+
+Verificar a imagem com o nome desafio/laravel-app
+
+Copiar o CONTAINER ID
+
+rodar o comando 
+
+$ docker exec -it <container id> bash
+
+Exemplo:
+CONTAINER ID   IMAGE                 COMMAND                  CREATED         STATUS              PORTS                                                  NAMES
+5caf9fbc5464   desafio/laravel-app   "docker-php-entrypoi…"   7 minutes ago   Up About a minute   9000/tcp                                               api-git-laravel                                             desafio-laravel
+
+
+$ docker exec -it 5caf9fbc5464 bash
+
+
+## Importando vendor
+
+Para buscar todos os arquivos necessários executar comando dentro da imagem 
+
+# composer install
+
+
+OBS: Talvez seja necessário liberar permissões da pastas /var/www/storage/logs/ e /var/www/storage/framework/cache/data/
+
+Exemplo:
+chmod 777 -R /var/www/storage/logs/
+chmod 777 -R /var/www/storage/framework/cache/data/
+chmod 777 -R /var/www/storage/framework/sessions/
+chmod 777 -R /var/www/storage/framework/views/

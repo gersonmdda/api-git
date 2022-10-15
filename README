@@ -8,7 +8,7 @@ Inicialmente é necessário ter o docker instalado.
 
 Uma vez com o docker, efetuar o clone do projeto através do GitHub
 
-$ git clone 
+$ git clone git@github.com:gersonmdda/api-git.git
 
 ## Execução
 
@@ -36,11 +36,11 @@ rodar o comando
 $ docker exec -it <container id> bash
 
 Exemplo:
-CONTAINER ID   IMAGE                 COMMAND                  CREATED         STATUS              PORTS                                                  NAMES
-5caf9fbc5464   api-git/laravel-app   "docker-php-entrypoi…"   7 minutes ago   Up About a minute   9000/tcp                                               api-git-laravel                                             api-git-laravel
+CONTAINER ID   IMAGE                 COMMAND                  CREATED          STATUS              PORTS                                                  NAMES
+5ec976bd4daa   api-git/laravel-app   "docker-php-entrypoi…"   4 minutes ago    Up About a minute   9000/tcp                                               api-git-laravel
 
 
-$ docker exec -it 5caf9fbc5464 bash
+$ docker exec -it 5ec976bd4daa bash
 
 
 ## Importando vendor
@@ -53,7 +53,10 @@ Para buscar todos os arquivos necessários executar comando dentro da imagem
 OBS: Talvez seja necessário liberar permissões da pastas /var/www/storage/logs/ e /var/www/storage/framework/cache/data/
 
 Exemplo:
-chmod 777 -R /var/www/storage/logs/
-chmod 777 -R /var/www/storage/framework/cache/data/
-chmod 777 -R /var/www/storage/framework/sessions/
-chmod 777 -R /var/www/storage/framework/views/
+# chmod 777 -R /var/www/storage/logs/
+# chmod 777 -R /var/www/storage/framework/cache/data/
+# chmod 777 -R /var/www/storage/framework/sessions/
+# chmod 777 -R /var/www/storage/framework/views/
+
+
+## CRIAR env para o projeto de acordo com arquico .env.example

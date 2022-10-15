@@ -7,7 +7,7 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
-        image: desafio/laravel-app
+        image: api-git/laravel-app
         restart: unless-stopped
         working_dir: /var/www/
         volumes:

@@ -27,7 +27,7 @@ Executar o comando
 
 $ docker ps
 
-Verificar a imagem com o nome desafio/laravel-app
+Verificar a imagem com o nome api-git/laravel-app
 
 Copiar o CONTAINER ID
 
@@ -37,7 +37,7 @@ $ docker exec -it <container id> bash
 
 Exemplo:
 CONTAINER ID   IMAGE                 COMMAND                  CREATED         STATUS              PORTS                                                  NAMES
-5caf9fbc5464   desafio/laravel-app   "docker-php-entrypoi…"   7 minutes ago   Up About a minute   9000/tcp                                               api-git-laravel                                             desafio-laravel
+5caf9fbc5464   api-git/laravel-app   "docker-php-entrypoi…"   7 minutes ago   Up About a minute   9000/tcp                                               api-git-laravel                                             api-git-laravel
 
 
 $ docker exec -it 5caf9fbc5464 bash

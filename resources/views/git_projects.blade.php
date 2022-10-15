@@ -36,8 +36,8 @@
           <table class="table table-striped">
             <thead>
               <tr>
-                <th> <input value="Nome" name="commit" class="btn btn-default" type="submit" >  </th>
-                <th> <input value="Data do Commit" name="commit" class="btn btn-default" type="submit" >  </th>
+                <th> <input value="Nome" name="sort" class="btn btn-default" type="submit" >  </th>
+                <th> <input value="Data do Commit" name="sort" class="btn btn-default" type="submit" >  </th>
                 <th>Linguagem</th>
                 <th>Tamanho</th>
                 <th>Arquivado</th>

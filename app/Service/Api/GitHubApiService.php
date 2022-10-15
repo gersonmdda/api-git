@@ -15,15 +15,21 @@ class GitHubApiService
     {
 
         try{
-            $response = Http::withHeaders([
-                'Accept' => 'application/vnd.github+json',
-                'Authorization' => 'Bearer '.env('GIT_HUB_TOKEN')
-            ])->get(env('GIT_HUB_URL').'/users/'.env('GIT_HUB_USER').'/repos',['sort'=>$sort,'direction'=>$asc]);
-            $return = $this->verifyStatusCode($response);
+            $number_page = 1;
+            $array = [];
+            do{
+                $response = Http::withHeaders([
+                    'Accept' => 'application/vnd.github+json',
+                    'Authorization' => 'Bearer '.env('GIT_HUB_TOKEN')
+                ])->get(env('GIT_HUB_URL').'/users/'.env('GIT_HUB_USER').'/repos',['sort'=>$sort,'direction'=>$asc,'per_page'=>100,'page'=>$number_page]);
+                $response_array = $this->verifyStatusCode($response);
+                $array = array_merge($array,$response_array);
+                $number_page ++; 
+            } while ($response_array);
         }catch (Exception $e) {
             throw $e;
         }
-        return $return;
+        return $array;
     }
 
     public function getLastCommit(String $repository,String $branch = 'main'):? array

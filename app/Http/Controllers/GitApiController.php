@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\App;
 use App\Service\GithubService;
 use \Throwable;
 
-// use App\Service\RankingService;
 
 class GitApiController extends BaseController
 {

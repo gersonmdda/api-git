@@ -3,14 +3,13 @@
 namespace App\Service;
 
 use \Exception;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Carbon;
 use App\Service\Api\GitHubApiService;
 
 
 class GithubService
 {
-    protected GitHubApiService $gitHubApiService;
+    private GitHubApiService $gitHubApiService;
     
     function __construct(GitHubApiService $gitHubApiService) 
     {
